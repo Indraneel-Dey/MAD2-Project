@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+            crossorigin="anonymous"
+        />
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"
+        ></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Tickets App</title>
+    </head>
+    <body>
+        <div class="container-fluid" id="app">
+            <h3 v-if="$store.getters.isLoggedIn">Tickets App</h3>
+            <nav class="navbar navbar-expand-lg bg-warning" v-if="$store.getters.isLoggedIn">
+                <div class="navbar-collapse navbar-nav" id="navbarNavAltMarkup">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="nav-link active" aria-current="page"><router-link to="/">Home</router-link></a>
+                    <a class="nav-link"><router-link to="/booked_shows">Booked Shows</router-link></a>
+                    <a class="nav-link"><router-link to="/theatres">Theatres</router-link></a>
+                    <a class="nav-link"><router-link to="/shows">Shows</router-link></a>
+                    <a class="nav-link"><router-link to="/about">About Us</router-link></a>
+                    <a class="nav-link" v-if="$store.getters.getUser.tier == 2"><router-link to="/createtheatre">Create Theatre</router-link></a>
+                    <a class="nav-link" v-if="$store.getters.getUser.tier == 2"><router-link to="/createshow">Create Show</router-link></a>
+                    <a class="nav-link" v-if="$store.getters.getUser.tier == 2"><router-link to="/createtags">Create Tags</router-link></a>
+                    <a class="nav-link"><router-link to="/login" @click.native="handleLogout">Logout</router-link></a>
+                </div>
+            </nav>
+            <div style="text-align: right" v-if="$store.getters.isLoggedIn">
+                <router-link to="/messages" style="font-size: 30px">Messages <i class="fa fa-solid fa-envelope"></i></router-link>
+            </div>
+            <router-view></router-view>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.0.0/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/vuex@2.0.0"></script>
+    <script
+        type="module"
+        src="static/js/app.js"
+    ></script>
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+        type="text/css"
+    />
+</html>
