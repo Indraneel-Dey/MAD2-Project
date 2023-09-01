@@ -1,0 +1,9 @@
+Flask==2.3.2
+Flask-SQLAlchemy==3.0.5
+Flask-Bcrypt==1.0.1
+Flask-Login==0.6.2
+Flask-Caching==2.0.2
+SQLAlchemy-Utils==0.41.1
+Celery==5.3.1
+Redis==4.6.0
+docxtpl==0.16.7
